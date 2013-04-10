@@ -16,9 +16,10 @@ import           Data.Conduit
 performEvery
     :: (Monad m)
     => Integer
+    -- ^ Once every N items that flow throught he pipe.
     -> (Integer -> m ())
     -> ConduitM a a m ()
-performEvery n f = go 0
+performEvery n f = go 1
     where
       go !i = do
           x <- await
